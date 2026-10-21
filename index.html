@@ -209,6 +209,9 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
  .bento{grid-template-columns:repeat(3,minmax(0,1fr))}
  .ev{grid-column:auto;grid-template-columns:minmax(0,1fr);align-items:start}
  .ev .num{font-size:6.5rem}.cp{grid-column:span 2}
+ .ev:first-child:nth-last-child(3){grid-column:span 2;grid-template-columns:auto minmax(0,1fr)}
+ .ev:first-child:nth-last-child(3) .num{font-size:8rem}
+ .ev:first-child:nth-last-child(3)~.cp{grid-column:1/-1}
  .fam .wrap,.stack{max-width:820px}
 }
 @media (max-height:480px) and (orientation:landscape){.hero{min-height:0;padding-top:70px;padding-bottom:90px}.names{font-size:clamp(3rem,12vw,5rem)}}
@@ -224,7 +227,7 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
   <div class="blob bl1"></div><div class="blob bl2"></div><div class="blob bl3"></div>
   <svg class="badge" viewBox="0 0 120 120" aria-hidden="true"><defs><path id="cp" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"/></defs><text><textPath href="#cp">SAVE THE DATE ✦ SAVE THE DATE ✦</textPath></text><circle cx="60" cy="60" r="21" fill="#B0122C"/><text x="60" y="68" text-anchor="middle" style="font-size:22px;letter-spacing:0;fill:#FFE58A">♥</text></svg>
   <div class="in">
-    <div class="bism"><span class="ar" lang="ar">بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</span><br><small>Assalamu Alaikum · In the name of Allah, the Most Gracious, the Most Merciful</small></div>
+    <div class="bism"><span class="ar" lang="ar">بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</span><small>Assalamu Alaikum · In the name of Allah, the Most Gracious, the Most Merciful</small></div>
     <span class="tag">The wedding of</span>
     <h1 class="names"><span class="l1" id="n1">Farhan</span><span class="l2"><em>&amp;</em> <span id="n2" style="display:inline">Bareera</span></span></h1>
     <div><p class="full" id="full"></p><p class="inv" id="inv"></p></div>
@@ -234,13 +237,6 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
   <canvas id="dust" tabindex="0" role="button" aria-label="Foil covering the invitation. Scratch with your finger or mouse, or press Enter to open."></canvas>
 </header>
 
-<section class="wrap fam"><div class="stack">
-  <div class="orn rv">☪&#xFE0E;</div>
-  <article class="card rv"><p class="ar" lang="ar">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُمْ مِنْ أَنْفُسِكُمْ أَزْوَاجًا لِتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَوَدَّةً وَرَحْمَةً</p><p class="tr">“And among His signs is that He created spouses for you from yourselves, that you may find tranquility in them, and placed love and mercy between you.”</p><small>Surah Ar-Rum · 30:21</small></article>
-  <article class="card rv"><small>With the blessings of Almighty Allah</small><p class="host">Mr &amp; Mrs <em>Syed Sajid Ali</em></p><span class="and">and</span><p class="host">Mr &amp; Mrs <em>Raja Zafar Iqbal</em></p><p class="t">request the pleasure of your company, with family, at the wedding celebrations of their beloved children</p><p class="host">Syed Farhan Ali</p><span class="and">with</span><p class="host">Bareera Zafar</p><p class="t">Your presence and duas will complete our joy.</p></article>
-  <article class="card dk rv"><p class="ar" lang="ar">بَارَكَ اللَّهُ لَكَ وَبَارَكَ عَلَيْكَ وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ</p><p class="tr">“May Allah bless you, shower His blessings upon you, and unite you both in goodness.”</p><small>Dua for the couple</small></article>
-</div></section>
-
 <div class="bands" aria-hidden="true"><div class="band b2"><div class="track" id="t2"></div></div><div class="band b1"><div class="track" id="t1"></div></div></div>
 
 <main class="wrap">
@@ -248,6 +244,14 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
   <p class="lede" id="lEv"></p>
   <div class="bento" id="bento"></div>
 </main>
+
+<section class="wrap fam"><div class="stack">
+  <div class="orn rv">☪&#xFE0E;</div>
+  <article class="card rv"><p class="ar" lang="ar">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُمْ مِنْ أَنْفُسِكُمْ أَزْوَاجًا لِتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَوَدَّةً وَرَحْمَةً</p><p class="tr">“And among His signs is that He created spouses for you from yourselves, that you may find tranquility in them, and placed love and mercy between you.”</p><small>Surah Ar-Rum · 30:21</small></article>
+  <article class="card rv"><small>With the blessings of Almighty Allah</small><p class="host">Mr &amp; Mrs <em>Syed Sajid Ali</em></p><span class="and">and</span><p class="host">Mr &amp; Mrs <em>Raja Zafar Iqbal</em></p><p class="t">request the pleasure of your company, with family, at the Walima reception of their beloved children</p><p class="host">Syed Farhan Ali</p><span class="and">with</span><p class="host">Bareera Zafar</p><p class="t">Your presence and duas will complete our joy.</p></article>
+  <div class="pair"><article class="card rv" style="--c:#B7D1A3"><small>Groom’s family</small><p class="host">Mr &amp; Mrs<br><em>Syed Sajid Ali</em></p><p class="tr">Parents of Syed Farhan Ali</p></article><article class="card rv" style="--c:#F7C6CC"><small>Bride’s family</small><p class="host">Mr &amp; Mrs<br><em>Raja Zafar Iqbal</em></p><p class="tr">Parents of Bareera Zafar</p></article></div>
+  <article class="card dk rv"><p class="ar" lang="ar">بَارَكَ اللَّهُ لَكَ وَبَارَكَ عَلَيْكَ وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ</p><p class="tr">“May Allah bless you, shower His blessings upon you, and unite you both in goodness.”</p><small>Dua for the couple</small></article>
+</div></section>
 
 <footer class="foot">
   <h2>See you <em>there</em></h2>
@@ -257,17 +261,17 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 
 <script>
 /* ---- Edit these details ---- */
-var MODE='all';
+var MODE='walima';
+var MUSIC_AUTO=true;          /* true = music starts when guest scratches/taps, false = only starts from the Music button */
+var MUSIC_FILE='song.mp3';    /* your song file name, kept in the same folder as index.html */
 var EV=[
- {n:'Nikkah & Mehndi',d:'2026-11-29',day:'Sunday',v:'Yaqub Farmhouse',a:'Housing Development Road, near KDC Garden, Kala Gujran, Jhelum, 49600, Pakistan',s:[['Arrival','3:00 pm'],['Nikkah','4:00 pm'],['Dinner','5:00 pm'],['Mehndi','6:00 pm']],c:'#B7D1A3'},
- {n:'Barat',d:'2026-12-05',day:'Saturday',v:'Al Fazal Palace Marquee',a:'GT Rd, Dina, 49400, Pakistan',s:[['Arrival','12:00 noon'],['Lunch','1:30 pm'],['Ruksati','4:00 pm']],c:'#F7C6CC'},
  {n:'Walima',d:'2026-12-06',day:'Sunday',v:'The Serene Farm',a:'House No 48, Jammu Kashmir Agro Farming Scheme, Hussain Abad, Islamabad, Pakistan',s:[['Arrival','3:00 pm'],['Dinner','6:00 pm']],c:'#FFE58A'}];
 var W=MODE==='walima',$=function(id){return document.getElementById(id)},MON=['January','February','March','April','May','June','July','August','September','October','November','December'];
 $('full').textContent='Syed Farhan Ali & Bareera Zafar';
 $('inv').textContent=W?'invite you to celebrate their Walima':'invite you to celebrate their wedding';
 $('hEv').innerHTML=W?'The <em>evening</em>':'The <em>plan</em>';
 $('lEv').textContent=W?'Everything you need to find us.':'Every celebration, one tap from the map.';
-$('fn').textContent='With love of both families';$('wa').href='https://wa.me/?text='+encodeURIComponent('You are warmly invited to the wedding of Syed Farhan Ali & Bareera Zafar. '+location.href.split('#')[0]);
+$('fn').textContent='With love, the Syed & Raja families';$('wa').href='https://wa.me/?text='+encodeURIComponent('You are warmly invited to the wedding of Syed Farhan Ali & Bareera Zafar. '+location.href.split('#')[0]);
 document.title='Farhan & Bareera · '+(W?'Walima Invitation':'Wedding Invitation');
 var ROT=['-2deg','1.5deg','-1deg'];
 $('chips').innerHTML=EV.map(function(e,i){var p=e.d.split('-');return '<span class="chip" style="--c:'+e.c+';--r:'+ROT[i%3]+'">'+e.n+' · '+(+p[2])+' '+MON[p[1]-1].slice(0,3)+'</span>'}).join('');
@@ -358,13 +362,13 @@ function startSynth(){try{if(!AC){AC=new(window.AudioContext||window.webkitAudio
   cv.buffer=buf;wet=AC.createGain();wet.gain.value=.55;wet.connect(cv);cv.connect(master)}
  AC.resume();synthOn=true;master.gain.cancelScheduledValues(AC.currentTime);master.gain.setTargetAtTime(.6,AC.currentTime,1.6);nextT=AC.currentTime+.1;clearInterval(timer);timer=setInterval(sched,150);setBtn()}catch(e){}}
 function stopSynth(){synthOn=false;if(AC){master.gain.setTargetAtTime(0,AC.currentTime,.5);var t=timer;setTimeout(function(){if(!synthOn)clearInterval(t)},1800)}}
-function kick(){if(!musicOn&&!userOff)startMusic()}
+function kick(){if(MUSIC_AUTO&&!musicOn&&!userOff)startMusic()}
 $('mus').addEventListener('click',function(){if(musicOn){userOff=true;stopMusic()}else{userOff=false;startMusic()}});
 addEventListener('pointerup',function(e){if(!(e.target.closest&&e.target.closest('#mus')))kick()});
 document.addEventListener('visibilitychange',function(){if(!AC)return;if(document.hidden)AC.suspend();else if(musicOn)AC.resume()});
 
 /* ---- song (trimmed to start at 0:07) ---- */
-var SONG='song.mp3',au=new Audio(),songOk=true,fadeT;
+var SONG=MUSIC_FILE,au=new Audio(),songOk=true,fadeT;
 au.src=SONG;au.loop=true;au.preload='auto';au.volume=0;
 au.addEventListener('error',function(){songOk=false;if(musicOn&&!synthOn)startSynth()});
 function fade(to,done){clearInterval(fadeT);fadeT=setInterval(function(){var v=au.volume;if(Math.abs(to-v)<.05){au.volume=to;clearInterval(fadeT);if(done)done()}else au.volume=Math.min(1,Math.max(0,v+(to>v?.04:-.04)))},80)}
