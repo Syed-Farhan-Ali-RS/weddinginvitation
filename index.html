@@ -263,7 +263,7 @@ var EV=[
  {n:'Barat',d:'2026-12-05',day:'Saturday',v:'Al Fazal Palace Marquee',a:'GT Rd, Dina, 49400, Pakistan',s:[['Arrival','12:00 noon'],['Lunch','1:30 pm'],['Ruksati','4:00 pm']],c:'#F7C6CC'},
  {n:'Walima',d:'2026-12-06',day:'Sunday',v:'The Serene Farm',a:'House No 48, Jammu Kashmir Agro Farming Scheme, Hussain Abad, Islamabad, Pakistan',s:[['Arrival','3:00 pm'],['Dinner','6:00 pm']],c:'#FFE58A'}];
 var W=MODE==='walima',$=function(id){return document.getElementById(id)},MON=['January','February','March','April','May','June','July','August','September','October','November','December'];
-$('full').textContent='Farhan & Bareera';
+$('full').textContent='Syed Farhan Ali & Bareera Zafar';
 $('inv').textContent=W?'invite you to celebrate their Walima':'invite you to celebrate their wedding';
 $('hEv').innerHTML=W?'The <em>evening</em>':'The <em>plan</em>';
 $('lEv').textContent=W?'Everything you need to find us.':'Every celebration, one tap from the map.';
@@ -342,7 +342,7 @@ var lt=0;addEventListener('pointermove',function(e){if(!done||e.pointerType==='t
 addEventListener('pointerdown',function(e){if(done&&!(e.target.closest&&e.target.closest('a')))burst(e.clientX,e.clientY,22,6.28,true)});
 
 /* ---- soft music (generated in the browser, no audio file) ---- */
-var AC,master,wet,musicOn=false,synthOn=false,userOff=false,timer,step=0,nextT=0,
+var AC,master,wet,musicOn=true,synthOn=true,userOff=true,timer,step=0,nextT=0,
 CH=[[48,60,64,71],[45,57,64,72],[41,60,65,69],[43,59,62,67]];
 function mf(m){return 440*Math.pow(2,(m-69)/12)}
 function pluck(f,t,v,d){var o=AC.createOscillator(),g=AC.createGain();o.type='triangle';o.frequency.value=f;g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(v,t+.02);g.gain.exponentialRampToValueAtTime(.0001,t+d);o.connect(g);g.connect(master);g.connect(wet);o.start(t);o.stop(t+d+.05)}
