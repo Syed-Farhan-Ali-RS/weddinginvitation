@@ -108,7 +108,6 @@ h2.sec em{color:var(--accent)}
 @keyframes sw1{from{transform:rotate(-2.5deg)}to{transform:rotate(2.5deg)}}
 @keyframes sw2{from{transform:rotate(177.5deg)}to{transform:rotate(182.5deg)}}
 .map{margin-right:6px}
-.map.cal{background:transparent;color:#3B0810;border:1.5px solid #3B0810;padding:6.5px 14px}
 @media (prefers-reduced-motion:reduce){.v1,.v2{animation:none}}
 
 /* ---- pin-style scratch card (responsive) ---- */
@@ -237,7 +236,6 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 .pair .tr{font-size:clamp(.95rem,3.6vw,1.2rem)}
 .card.dk{background:var(--cherry);color:var(--butter)}
 .card.dk::before{border-color:rgba(255,249,235,.45)}
-.wa{display:inline-block;margin-top:18px;padding:12px 24px;border-radius:999px;background:#1E9E52;color:#fff;font-weight:600;text-decoration:none}
 @media (max-width:360px){.pair{grid-template-columns:1fr}.card{padding:30px 16px}}
 @media (min-width:601px){.card{padding:48px 40px}.pair .card{padding:40px 20px}}
 @media (min-width:1024px){
@@ -249,6 +247,12 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 }
 @media (max-height:480px) and (orientation:landscape){.hero{min-height:0;padding-top:70px;padding-bottom:90px}.names{font-size:clamp(3rem,12vw,5rem)}}
 @media (prefers-reduced-motion:reduce){.in>*{opacity:1;transform:none;filter:none;animation:none!important}.rv{opacity:1;transform:none;transition:none}.blob,.badge,.star,.track,.fl,.cue,.dock i{animation:none!important}}
+/* events-only layout */
+@media (min-width:1024px){
+ .bento.n1{grid-template-columns:minmax(0,540px);justify-content:center}
+ .bento.n1 .ev{grid-template-columns:auto minmax(0,1fr);align-items:center}
+ .bento.n2{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
 </style>
 </head>
 <body class="locked">
@@ -290,7 +294,7 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 
 <footer class="foot">
   <h2>See you <em>there</em></h2>
-  <p id="fn"></p><p class="ar" lang="ar" style="font-size:1.7rem;color:var(--accent);margin-top:6px">جَزَاكُمُ ٱللَّهُ خَيْرًا</p><a class="wa" id="wa" target="_blank" rel="noopener">Share on WhatsApp</a>
+  <p id="fn"></p><p class="ar" lang="ar" style="font-size:1.7rem;color:var(--accent);margin-top:6px">جَزَاكُمُ ٱللَّهُ خَيْرًا</p>
 </footer>
 <div class="dock" id="dock"><i>♥</i> <span id="dk"></span></div>
 
@@ -307,15 +311,15 @@ $('full').textContent='Syed Farhan Ali & Bareera Zafar';
 $('inv').textContent=W?'invite you to celebrate their Walima':'invite you to celebrate their wedding';
 $('hEv').innerHTML=W?'The <em>evening</em>':'The <em>plan</em>';
 $('lEv').textContent=W?'Everything you need to find us.':'Every celebration, one tap from the map.';
-$('fn').textContent='With love, of both families';$('wa').href='https://wa.me/?text='+encodeURIComponent('You are warmly invited to the wedding of Syed Farhan Ali & Bareera Zafar. '+location.href.split('#')[0]);
+$('fn').textContent='With love, of both families';
 document.title='Farhan & Bareera · '+(W?'Walima Invitation':'Wedding Invitation');
 var ROT=['-2deg','1.5deg','-1deg'];
 $('chips').innerHTML=EV.map(function(e,i){var p=e.d.split('-');return '<span class="chip" style="--c:'+e.c+';--r:'+ROT[i%3]+'">'+e.n+' · '+(+p[2])+' '+MON[p[1]-1].slice(0,3)+'</span>'}).join('');
 var ph=['Farhan','Bareera'].concat(EV.map(function(e){return e.n})),row='';for(var i=0;i<4;i++)ph.forEach(function(x,j){row+='<span>'+x+(j%2?' ✦':' ☪\uFE0E')+'</span>'});
 $('t1').innerHTML=row+row;$('t2').innerHTML=row+row;
+$('bento').className='bento n'+EV.length;
 $('bento').innerHTML=EV.map(function(e,i){var p=e.d.split('-');
- return '<article class="tile ev rv" style="--c:'+e.c+'"><span class="star">✺</span><div class="num">'+(+p[2])+'</div><div><div class="mo">'+MON[p[1]-1]+' '+p[0]+'</div><h3>'+e.n+'</h3><div>'+e.day+'</div><div class="vn"><b>'+e.v+'</b>'+(e.a?'<br>'+e.a:'')+'</div>'+(e.tag?'<span class="mtag">'+e.tag+'</span>':'')+'<ul class="sch">'+e.s.map(function(x){return '<li><b>'+x[0]+'</b><span>'+x[1]+'</span></li>'}).join('')+'</ul><a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(e.v+(e.a?', '+e.a:''))+'">Open in Maps</a><a class="map cal" target="_blank" rel="noopener" href="'+calUrl(e)+'">Add to calendar</a></div></article>'}).join('')+
- '<article class="tile cd rv" style="--c:#5D0D18"><div class="big" id="cdn">0</div><div id="cdl">days to go</div></article><article class="tile cp rv" style="--c:#D4DEDA">Syed Farhan Ali<small>weds</small>Bareera Zafar</article>';
+ return '<article class="tile ev rv" style="--c:'+e.c+'"><span class="star">✺</span><div class="num">'+(+p[2])+'</div><div><div class="mo">'+MON[p[1]-1]+' '+p[0]+'</div><h3>'+e.n+'</h3><div>'+e.day+'</div><div class="vn"><b>'+e.v+'</b>'+(e.a?'<br>'+e.a:'')+'</div>'+(e.tag?'<span class="mtag">'+e.tag+'</span>':'')+'<ul class="sch">'+e.s.map(function(x){return '<li><b>'+x[0]+'</b><span>'+x[1]+'</span></li>'}).join('')+'</ul><a class="map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(e.v+(e.a?', '+e.a:''))+'">Open in Maps</a></div></article>'}).join('');
 
 /* sprinkle */
 var sp=$('sprinkle'),sx=sp.getContext('2d'),bits=[],running=false,COL=['#5D0D18','#FFF9EB','#9FB2AC','#D4DEDA','#FFFFFF','#8A2A38'];
@@ -369,14 +373,11 @@ paint();addEventListener('resize',function(){if(!done)paint()});if(document.font
 (function(){var h='',i;for(i=0;i<16;i++){var hr=i%3===0;h+='<b class="fl" style="left:'+Math.random()*100+'%;--s:'+(11+Math.random()*14)+'px;--t:'+(9+Math.random()*9).toFixed(1)+'s;--dl:'+(Math.random()*8).toFixed(1)+'s;--x:'+((Math.random()-.5)*90).toFixed(0)+'px;color:'+(hr?'#5D0D18':'#7E948E')+'">'+(hr?'♥':i%5===1?'☪\uFE0E':'✦')+'</b>'}hero.insertAdjacentHTML('beforeend',h)})();
 
 /* scroll reveal, countdown, tilt */
-function countUp(){var b=$('cdn'),n=+b.dataset.n||0,s=performance.now();(function f(t){var p=Math.min((t-s)/1700,1);b.textContent=Math.round(n*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)})(s)}
-function updateCount(){var n=Math.ceil((new Date(EV[0].d+'T00:00:00')-new Date())/864e5),b=$('cdn');
- b.dataset.n=Math.max(n,0);if(b.dataset.on)b.textContent=Math.max(n,0);
- $('cdl').textContent=n===1?'day to go':'days to go';$('dk').textContent=n>0?n+(n===1?' day':' days')+' to go':'Today is the day!'}
+function updateCount(){var n=Math.ceil((new Date(EV[0].d+'T00:00:00')-new Date())/864e5);$('dk').textContent=n>0?n+(n===1?' day':' days')+' to go':'Today is the day!'}
 updateCount();setInterval(updateCount,60000);
 var tiles=[].slice.call(document.querySelectorAll('.rv'));
 tiles.forEach(function(el,i){el.style.transitionDelay=(i%2*.12)+'s'});
-if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target);if(e.target.classList.contains('cd')){$('cdn').dataset.on=1;countUp()}}})},{threshold:.25});tiles.forEach(function(el){io.observe(el)})}else tiles.forEach(function(el){el.classList.add('show')});
+if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target);}})},{threshold:.25});tiles.forEach(function(el){io.observe(el)})}else tiles.forEach(function(el){el.classList.add('show')});
 tiles.forEach(function(el){el.addEventListener('pointermove',function(e){if(e.pointerType==='touch')return;var r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;el.style.transition='transform .1s';el.style.transform='perspective(800px) rotateY('+x*8+'deg) rotateX('+(-y*8)+'deg) scale(1.02)'});
  el.addEventListener('pointerleave',function(){el.style.transition='';el.style.transform=''})});
 var lt=0;addEventListener('pointermove',function(e){if(!done||e.pointerType==='touch')return;var n=performance.now();if(n-lt<80)return;lt=n;burst(e.clientX,e.clientY,2,6.28,true)});
@@ -396,10 +397,6 @@ $('mus').addEventListener('click',function(){if(musicOn){userOff=true;stopMusic(
 addEventListener('pointerup',function(e){if(!(e.target.closest&&e.target.closest('#mus')))kick()});
 document.addEventListener('visibilitychange',function(){if(document.hidden)au.pause();else if(musicOn&&songOk){var p=au.play();if(p&&p.catch)p.catch(function(){})}});
 
-/* ---- add to calendar link ---- */
-function calUrl(e){var h=0,m=0,s=e.s[0][1].toLowerCase(),r=s.match(/(\d+):(\d+)/);if(r){h=+r[1]%12;m=+r[2];if(s.indexOf('pm')>-1||s.indexOf('noon')>-1)h+=12}
- function p(n){return(n<10?'0':'')+n}var d=e.d.replace(/-/g,'');
- return 'https://calendar.google.com/calendar/render?action=TEMPLATE&text='+encodeURIComponent(e.n+' - Syed Farhan Ali & Bareera Zafar')+'&dates='+d+'T'+p(h)+p(m)+'00/'+d+'T'+p(Math.min(h+4,23))+p(m)+'00&ctz=Asia/Karachi&location='+encodeURIComponent(e.v+(e.a?', '+e.a:''))+'&details='+encodeURIComponent(e.s.map(function(x){return x[0]+' '+x[1]}).join(', '))}
 </script>
 </body>
 </html>
