@@ -294,7 +294,7 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 <div class="bands" aria-hidden="true"><div class="band b2"><div class="track" id="t2"></div></div><div class="band b1"><div class="track" id="t1"></div></div></div>
 <br>
 
-<section class="wrap pic"><figure class="rv"><div class="fr"><img id="couplePhoto" src="couple.jpg" alt="Farhan and Bareera seated together on a sofa between flower arches" width="1200" height="799" decoding="async"></div><figcaption><em>Alhamdulillah</em><small>Farhan &amp; Bareera</small></figcaption></figure></section>
+<section class="wrap pic"><figure class="rv"><div class="fr"><script>var PH=['/Bareera_Farhan.jpg','../Bareera_Farhan.jpg','Bareera_Farhan.jpg'],pi=0;function pf(im){if(++pi<PH.length)im.src=PH[pi]}</script><img id="couplePhoto" src="/Bareera_Farhan.jpg" onerror="pf(this)" alt="Farhan and Bareera seated together on a sofa between flower arches" width="1200" height="799" decoding="async"></div><figcaption><em>Alhamdulillah</em><small>Farhan &amp; Bareera</small></figcaption></figure></section>
 
 <section class="wrap fam"><div class="stack">
   <div class="orn rv">☪&#xFE0E;</div>
@@ -402,10 +402,11 @@ var lt=0;addEventListener('pointermove',function(e){if(!done||e.pointerType==='t
 addEventListener('pointerdown',function(e){if(done&&!(e.target.closest&&e.target.closest('a')))burst(e.clientX,e.clientY,22,6.28,true)});
 
 /* ---- music: your song, embedded in this file (already trimmed to start at 0:07); decoded after the page is shown ---- */
+var SONGS=['/song.mp3','../song.mp3','song.mp3'],si=0;
 var musicOn=false,userOff=false,songOk=true,songUrl=null,wantPlay=false,fadeT,au=new Audio(),SIL='data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQAAAAA=';
 au.preload='auto';au.volume=0;au.setAttribute('playsinline','');
-au.addEventListener('error',function(){if(!songUrl||au.src.indexOf('data:')===0)return;songOk=false;musicOn=false;setBtn()});
-function decodeSong(){var el=document.getElementById('songdata');if(!el){songUrl='song.mp3';au.loop=true;au.src=songUrl;au.load();if(wantPlay&&musicOn)play();return}if(el.textContent.length<1000){setTimeout(decodeSong,400);return}
+au.addEventListener('error',function(){if(!songUrl||au.src.indexOf('data:')===0||au.src.indexOf('blob:')===0)return;if(si<SONGS.length-1){si++;au.src=SONGS[si];au.loop=true;au.load();if(musicOn||wantPlay)play();return}songOk=false;musicOn=false;setBtn()});
+function decodeSong(){var el=document.getElementById('songdata');if(!el){songUrl=SONGS[0];au.loop=true;au.src=songUrl;au.load();if(wantPlay&&musicOn)play();return}if(el.textContent.length<1000){setTimeout(decodeSong,400);return}
  var s=el.textContent.trim(),i=s.indexOf(',')+1,parts=[],N=262144;
  (function step(){if(i>=s.length){songUrl=URL.createObjectURL(new Blob(parts,{type:'audio/mpeg'}));el.textContent='';au.loop=true;au.src=songUrl;if(wantPlay&&musicOn)play();return}
   try{var c=atob(s.substr(i,N)),a=new Uint8Array(c.length),k;for(k=0;k<c.length;k++)a[k]=c.charCodeAt(k);parts.push(a)}catch(e){songOk=false;return}
