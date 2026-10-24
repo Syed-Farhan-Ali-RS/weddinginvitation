@@ -141,6 +141,17 @@ body.locked{position:fixed;top:0;left:0;right:0;width:100%}
 .pin.ready::after{display:none}
 .blob{filter:blur(46px)}
 body:not(.on) .blob,body:not(.on) .vine,body:not(.on) .badge{animation-play-state:paused}
+/* ---- couple photo in an arch frame ---- */
+.pic{padding-top:0;padding-bottom:0}
+.pic figure{margin:0 auto;max-width:620px}
+.pic .fr{position:relative;aspect-ratio:3/2;overflow:hidden;border-radius:50% 50% 28px 28px / 44% 44% 28px 28px;background:#EADFC2;box-shadow:0 34px 56px -32px rgba(59,8,16,.7)}
+.pic .fr::after{content:"";position:absolute;inset:9px;border:1.5px solid rgba(255,249,235,.75);border-radius:50% 50% 20px 20px / 44% 44% 20px 20px;pointer-events:none}
+.pic img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 45%;transform:scale(1.1);transition:transform 6s ease-out}
+.pic .rv.show img{transform:scale(1)}
+.pic figcaption{text-align:center;margin-top:18px;font-family:'Instrument Serif',Georgia,serif;font-size:clamp(1.7rem,7vw,2.4rem);line-height:1.05}
+.pic figcaption em{color:var(--accent)}
+.pic figcaption small{display:block;margin-top:6px;font:600 .72rem 'Bricolage Grotesque',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--mute)}
+@media (prefers-reduced-motion:reduce){.pic img{transition:none;transform:none}}
 a:focus-visible,canvas:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
 #sprinkle{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:60}
 @media (max-width:600px){
@@ -283,6 +294,8 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 <div class="bands" aria-hidden="true"><div class="band b2"><div class="track" id="t2"></div></div><div class="band b1"><div class="track" id="t1"></div></div></div>
 <br>
 
+<section class="wrap pic"><figure class="rv"><div class="fr"><img id="couplePhoto" src="couple.jpg" alt="Farhan and Bareera seated together on a sofa between flower arches" width="1200" height="799" decoding="async"></div><figcaption><em>Alhamdulillah</em><small>Farhan &amp; Bareera</small></figcaption></figure></section>
+
 <section class="wrap fam"><div class="stack">
   <div class="orn rv">☪&#xFE0E;</div>
   <article class="card rv"><p class="ar" lang="ar">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُمْ مِنْ أَنْفُسِكُمْ أَزْوَاجًا لِتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَوَدَّةً وَرَحْمَةً</p><p class="tr">“And among His signs is that He created spouses for you from yourselves, that you may find tranquility in them, and placed love and mercy between you.”</p><small>Surah Ar-Rum · 30:21</small></article>
@@ -409,6 +422,7 @@ function kick(){if(MUSIC_AUTO&&!musicOn&&!userOff&&songOk)startMusic()}
 $('mus').addEventListener('click',function(){if(musicOn){userOff=true;stopMusic()}else{userOff=false;startMusic()}});
 addEventListener('pointerup',function(e){if(!(e.target.closest&&e.target.closest('#mus')))kick()});
 document.addEventListener('visibilitychange',function(){if(document.hidden)au.pause();else if(musicOn&&songOk&&songUrl){var p=au.play();if(p&&p.catch)p.catch(function(){})}});
+addEventListener('load',function(){var pd=document.getElementById('photodata'),im=document.getElementById('couplePhoto');if(pd&&im){im.src=pd.textContent.trim();pd.textContent=''}});
 </script>
 </body>
 </html>
