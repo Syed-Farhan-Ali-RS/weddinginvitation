@@ -282,6 +282,31 @@ p{margin:0}
   .s-ev>.in{max-width:900px}
   .scene{padding-top:80px;padding-bottom:80px}
 }
+@media (max-width:699px){
+  .scene{padding-left:clamp(12px,4vw,20px);padding-right:clamp(12px,4vw,20px)}
+  .scene>.in{max-width:100%;min-width:0}
+  .ttl .sc{font-size:clamp(2.25rem,10.5vw,3.3rem)}
+  .env{margin-top:clamp(72px,24vw,110px)}
+  .letter{width:min(100%,440px);padding:clamp(28px,7vw,34px) clamp(18px,6vw,26px)}
+  .cdn{gap:clamp(6px,2.8vw,14px)}
+  .cdn div{flex:1 1 0;min-width:0}
+  .cdn b{font-size:clamp(1.75rem,8.5vw,2.5rem)}
+  .cdn span{font-size:.58rem;letter-spacing:clamp(.08em,1.9vw,.18em)}
+  .mus{right:max(10px,env(safe-area-inset-right));gap:6px;padding:8px 11px}
+  .chap{left:max(10px,env(safe-area-inset-left));padding:6px 11px}
+  .tapme,.btn{min-height:44px}
+  .sheet{padding-left:12px;padding-right:12px}
+  .htag{width:min(100%,360px)}
+}
+@media (max-width:380px){
+  .mus{gap:5px;padding:7px 9px;font-size:.65rem;letter-spacing:.11em}
+  .chap{gap:4px;padding:6px 9px}
+  .chap span{font-size:.58rem;letter-spacing:.16em}
+  .cdn span{letter-spacing:.08em}
+}
+@media (min-width:700px) and (max-width:859px){
+  .s-ev>.in{max-width:720px}
+}
 @media (max-width:360px){.tapme{font-size:.98rem;padding:11px 18px 11px 14px}}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01s!important;animation-iteration-count:1!important;transition-duration:.01s!important}
